@@ -1,4 +1,5 @@
 const request = require("request")
+const geocode = require("./utils/geocode")
 
 const url = "https://api.darksky.net/forecast/fcf3eea7b0b47d7ffb61ed729e8c9c70/37.8267,-122.4233?units=si"
 
@@ -19,24 +20,7 @@ request({
 
 
 
-const url2 = "https://api.mapbox.com/geocoding/v5/mapbox.places/ismailia.json?access_token=pk.eyJ1Ijoib21hcjE0IiwiYSI6ImNqdTlwd3ZiMzBsdjYzeXBkMmJ4cDR0dzYifQ.Ghlv7MCv88FUH722XgmLjA"
-
-request({url: url2, json:true}, (err, res) => {
-    if(err){
-        console.log("can not access geocode service")
-    }
-    else if(res.body.message){
-        console.log(res.body.message)
-
-    }else if(res.body.features.length === 0){
-        console.log("there is no place match with your serach")
-
-    }
-    else{
-        const geocodeData = res.body
-        const lat = geocodeData.features[0].center[0]
-        const long = geocodeData.features[0].center[1]
-
-        console.log("lat: " + lat + " long: " + long)
-    }
+geocode("ss",(err,data)=>{
+    console.log(err)
+    console.log(data)
 })
