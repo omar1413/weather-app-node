@@ -5,17 +5,22 @@ const geocode = require("./utils/geocode")
 
 
 
-// geocode("ss",(err,data)=>{
-//     console.log(err)
-//     console.log(data)
+geocode("ismailia",(err,data)=>{
+  if(err){
+      return console.log(err)
+  }
+
+  forcast(data.latitude, data.longitude, (err, forcastData) => {
+      if(err){
+          return console.log(err)
+      }
+
+      console.log(data.location)
+      console.log(forcastData.summary)
+
+  })
 
    
-// })
-
-
-forcast(36.33, 41.28667, (err, data) => {
-    console.log(err)
-    console.log(data)
 })
 
 

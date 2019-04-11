@@ -16,9 +16,9 @@ const forcast = (lat, long, callback) => {
         }
         else {
             const forcastData = res.body
-            console.log("Its currently", forcastData.currently.temperature, "degree out. there is a", forcastData.currently.precipProbability + "%", "chance of rain")
             data = {
-                temp: forcastData.currently.temperature
+                temp: forcastData.currently.temperature,
+                summary : "Its currently " + forcastData.currently.temperature + " degree out. there is a " + forcastData.currently.precipProbability + "%" + " chance of rain"
             }
         }
 

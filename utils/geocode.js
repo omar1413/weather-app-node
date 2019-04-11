@@ -18,8 +18,8 @@ const geocode = (address, callback) =>{
         }else{
             geocodeData = res.body
             data = {
-                latitude: geocodeData.features[0].center[0],
-                longitude: geocodeData.features[0].center[1],
+                latitude: geocodeData.features[0].center[1],
+                longitude: geocodeData.features[0].center[0],
                 location:geocodeData.features[0].place_name 
             }
         }
