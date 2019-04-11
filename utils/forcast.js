@@ -6,19 +6,18 @@ const forcast = (lat, long, callback) => {
     let msgError = undefined
     let data = undefined
     request({
-        url: url,
+        url,
         json: true
-    }, (err, res) => {
+    }, (err, {body}) => {
         if (err) {
             msgError = "can not access darksky service"
-        } else if (res.body.error) {
-            msgError = res.body.error
+        } else if (body.error) {
+            msgError = body.error
         }
         else {
-            const forcastData = res.body
             data = {
-                temp: forcastData.currently.temperature,
-                summary : "Its currently " + forcastData.currently.temperature + " degree out. there is a " + forcastData.currently.precipProbability + "%" + " chance of rain"
+                temp: body.currently.temperature,
+                summary : "Its currently " + body.currently.temperature + " degree out. there is a " + body.currently.precipProbability + "%" + " chance of rain"
             }
         }
 

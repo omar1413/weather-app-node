@@ -8,18 +8,18 @@ if (!address) {
    
 }
 else {
-    geocode(address, (err, data) => {
+    geocode(address, (err, {latitude, longitude,location}) => {
         if (err) {
             return console.log(err)
         }
 
-        forcast(data.latitude, data.longitude, (err, forcastData) => {
+        forcast(latitude, longitude, (err, {summary}) => {
             if (err) {
                 return console.log(err)
             }
 
-            console.log(data.location)
-            console.log(forcastData.summary)
+            console.log(location)
+            console.log(summary)
 
         })
 
